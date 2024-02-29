@@ -1,0 +1,45 @@
+.main-table {
+  display: block;
+  border-radius: 1.25rem;
+  background-color: #FFFFFF;
+
+  &__buttons {
+    display: flex;
+    padding: .625rem 1rem;
+    gap: .5rem;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    padding: .875rem .875rem .875rem 1.5rem;
+    gap: 1rem;
+  }
+
+  &__cell {
+    display: flex;
+    width: 100%;
+    max-width: 17.5rem;
+    font-size: .875rem;
+    color: #263238;
+
+    &_alt {
+      justify-content: end;
+    }
+  }
+
+  &__title {
+    color: #2F4C97;
+    font-size: .75rem;
+    font-weight: 500;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    .main-table__row {
+      border-top: 1px solid rgba(171, 171, 172, 0.16);
+    }
+  }
+}

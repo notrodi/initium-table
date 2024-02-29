@@ -1,0 +1,33 @@
+.btn-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: .5rem;
+  border-radius: 50%;
+  background: transparent;
+  transition: all .2s;
+
+  svg {
+    fill: #A8B0BF;
+  }
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    svg {
+      fill: #304879;
+    }
+  }
+
+  &:hover {
+    background: #E2EEFF;
+    cursor: pointer;
+  }
+
+  &:active {
+    background: #B5D3FF;
+  }
+
+  &:focus-visible {
+    outline: 1px solid #B5D3FF;
+  }
+}
