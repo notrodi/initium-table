@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { IClient } from '@interfaces/client.interface';
 import { CLIENTS } from '@mocks/clients.mock';
+import { DialogService } from 'app/shared/services/dialog.service';
 
 @Component({
   selector: 'it-main-table',
@@ -12,4 +13,10 @@ import { CLIENTS } from '@mocks/clients.mock';
 export class MainTableComponent {
   readonly clients = CLIENTS;
   // readonly clients: IClient[] = [];
+  
+  constructor (private readonly _dialog: DialogService) { }
+
+  public onClickAdd() {
+    this._dialog.show();
+  }
 }

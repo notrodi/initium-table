@@ -2,3 +2,7 @@
   <h1>{{ title }}</h1>
   <it-main-table></it-main-table>
 </div>
+
+<ng-container *ngIf="isShowDialog">
+  <it-dialog></it-dialog>
+</ng-container>

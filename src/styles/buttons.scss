@@ -1,10 +1,56 @@
+.btn {
+  padding: 1rem 1.375rem;
+  font-size: 1.125rem;
+  border-radius: 2.25rem;
+  background: #2F67D5;
+  color: #FFFFFF;
+  transition: all .2s;
+  cursor: pointer;
+
+  &:hover {
+    background: #3C7CF8;
+  }
+
+  &:active {
+    background: #194EB6;
+  }
+
+  &:focus-visible {
+    outline: 1px solid #194EB6;
+    outline-offset: .125rem;
+  }
+}
+
+.btn_alt {
+  padding: 1rem 1.375rem;
+  font-size: 1.125rem;
+  border-radius: 2.25rem;
+  color: #2F67D5;
+  transition: all .2s;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(60, 124, 248, .1);
+  }
+
+  &:active {
+    background: rgba(25, 78, 182, .2);
+  }
+
+  &:focus-visible {
+    outline: 1px solid #194EB6;
+    outline-offset: .125rem;
+  }
+
+}
+
 .btn-icon {
   width: 2.25rem;
   height: 2.25rem;
   padding: .5rem;
   border-radius: 50%;
-  background: transparent;
   transition: all .2s;
+  cursor: pointer;
 
   svg {
     fill: #A8B0BF;
@@ -20,7 +66,6 @@
 
   &:hover {
     background: #E2EEFF;
-    cursor: pointer;
   }
 
   &:active {
