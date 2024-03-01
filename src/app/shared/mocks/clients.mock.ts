@@ -4,14 +4,14 @@ export const CLIENTS: IClient[] = [
   {
     name: 'Кирилл',
     surname: 'Долгорученко',
-    email: 'kerxl@gmail.com',
-    phone: '+79007772211'
+    email: 'kerxt@yandex.ru',
+    phone: '+79261888524'
   },
   {
-    name: 'Анна',
-    surname: 'Иванова',
-    email: 'anna@example.com',
-    phone: '+79123456789'
+    name: 'Алексей',
+    surname: 'Родионов',
+    email: 'not_rodi@gmail.com',
+    phone: '+79999667718'
   },
   {
     name: 'Иван',
