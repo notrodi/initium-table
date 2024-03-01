@@ -1,6 +1,8 @@
 .main-table {
-  display: block;
+  display: flex;
+  flex-direction: column;
   border-radius: 1.25rem;
+  overflow: hidden;
   background-color: #FFFFFF;
 
   &__buttons {
@@ -35,6 +37,7 @@
   }
 
   &__container {
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
 
