@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { IClient } from '@interfaces/client.interface';
 import { CLIENTS } from '@mocks/clients.mock';
 
 @Component({
@@ -10,4 +11,5 @@ import { CLIENTS } from '@mocks/clients.mock';
 })
 export class MainTableComponent {
   readonly clients = CLIENTS;
+  // readonly clients: IClient[] = [];
 }

@@ -11,6 +11,14 @@
     gap: .5rem;
   }
 
+  &__header {
+    padding-right: 1.625rem !important;
+
+    &_alt {
+      border-bottom: 1px solid rgba(171, 171, 172, 0.16);
+    }
+  }
+
   &__row {
     display: flex;
     align-items: center;
@@ -41,8 +49,18 @@
     display: flex;
     flex-direction: column;
 
-    .main-table__row {
-      border-top: 1px solid rgba(171, 171, 172, 0.16);
+    .main-table__row:not(:last-child) {
+      border-bottom: 1px solid rgba(171, 171, 172, 0.16);
+    }
+
+    &::-webkit-scrollbar {
+      width: .75rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: .5rem;
+      border: .25rem solid #FFFFFF;
+      background: #D7E1ED;
     }
   }
 }
