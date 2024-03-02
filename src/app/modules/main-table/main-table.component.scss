@@ -12,17 +12,13 @@
   }
 
   &__header {
-    padding-right: 1.625rem !important;
-
-    &_alt {
-      border-bottom: 1px solid rgba(171, 171, 172, 0.16);
-    }
+    border-bottom: 1px solid rgba(171, 171, 172, 0.16);
   }
 
   &__row {
     display: flex;
     align-items: center;
-    padding: .875rem .875rem .875rem 1.5rem;
+    padding: .875rem 1.5rem;
     gap: 1rem;
   }
 

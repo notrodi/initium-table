@@ -53,15 +53,7 @@
   cursor: pointer;
 
   svg {
-    fill: #A8B0BF;
-  }
-
-  &:hover,
-  &:active,
-  &:focus-visible {
-    svg {
-      fill: #304879;
-    }
+    fill: #304879;
   }
 
   &:hover {
@@ -74,5 +66,13 @@
 
   &:focus-visible {
     outline: 1px solid #B5D3FF;
+  }
+
+  &:disabled {
+    pointer-events: none;
+
+    svg {
+      fill: #A8B0BF;
+    }
   }
 }
