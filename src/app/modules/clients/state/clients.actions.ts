@@ -1,4 +1,4 @@
-import { IClient } from '@interfaces/client.interface';
+import { IClient } from '@interfaces';
 
 export namespace ClientsActions {
   export class GetClients {

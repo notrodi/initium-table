@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IClientsDto } from '../inrefaces';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ClientsApiService {
   constructor( private readonly httpClient: HttpClient ) { }
 
-  getClients(): Observable<any> {
-    return this.httpClient.get('https://test-data.directorix.cloud/task1');
+  getClients(): Observable<IClientsDto> {
+    return this.httpClient.get<IClientsDto>('https://test-data.directorix.cloud/task1');
   }
 }

@@ -1,9 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { IClient } from '@interfaces/client.interface';
-import { CLIENTS } from '@mocks/clients.mock';
-import { Store } from '@ngxs/store';
+import { IClient } from '@interfaces';
+import { CLIENTS } from '@mocks';
+import { Select, Store } from '@ngxs/store';
 import { DialogService } from 'app/shared/services/dialog.service';
 import { ClientsActions } from '../clients/state/clients.actions';
+import { ClientsState } from '../clients/state/clients.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'it-main-table',
@@ -13,8 +15,10 @@ import { ClientsActions } from '../clients/state/clients.actions';
   encapsulation: ViewEncapsulation.None
 })
 export class MainTableComponent {
-  readonly clients = CLIENTS;
+  // readonly clients = CLIENTS;
   // readonly clients: IClient[] = [];
+
+  @Select(ClientsState.clients) clients$: Observable<IClient[]>;
   
   constructor (
     private readonly _dialog: DialogService,

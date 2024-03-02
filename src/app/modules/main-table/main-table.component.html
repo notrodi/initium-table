@@ -8,7 +8,7 @@
   </button>
 </div>
 
-<div class="main-table__row main-table__header" [class.main-table__header_alt]="clients.length">
+<div class="main-table__row main-table__header" [class.main-table__header_alt]="(clients$ | async)?.length">
   <input type="checkbox" name="" id="">
   <div class="main-table__cell main-table__title">Имя</div>
   <div class="main-table__cell main-table__title">Фамилия</div>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="main-table__container">
-  <ng-container *ngFor="let client of clients">
+  <ng-container *ngFor="let client of clients$ | async">
     <div class="main-table__row">
       <input type="checkbox" name="" id="">
       <div class="main-table__cell">{{ client.name }}</div>

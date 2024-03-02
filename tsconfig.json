@@ -5,6 +5,7 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -26,8 +27,8 @@
     "baseUrl": "./src",
     "paths": {
       "@styles/*": ["styles/*"],
-      "@interfaces/*": ["app/shared/interfaces/*"],
-      "@mocks/*": ["app/shared/mocks/*"]
+      "@interfaces": ["app/shared/interfaces"],
+      "@mocks": ["app/shared/mocks"]
     }
 
   },
