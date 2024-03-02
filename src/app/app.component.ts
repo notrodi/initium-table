@@ -13,5 +13,5 @@ export class AppComponent {
     return this._dialog.isShowDialog;
   }
 
-  constructor (public readonly _dialog: DialogService) { }
+  constructor ( private readonly _dialog: DialogService ) { }
 }
