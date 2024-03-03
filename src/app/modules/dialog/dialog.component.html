@@ -1,5 +1,23 @@
 <div class="dialog__body">
   <ng-container [ngSwitch]="dialogType">
+    <ng-container *ngSwitchCase="dialogAdd">
+      <div class="dialog__title">
+        Новый клиент
+      </div>
+    
+      
+    
+      <div class="dialog__buttons">
+        <button type="button" class="btn_alt" (click)="onClose()">
+          Отмена
+        </button>
+        
+        <button type="button" class="btn" (click)="confirm()">
+          Сохранить
+        </button>
+      </div>
+    </ng-container>
+
     <ng-container *ngSwitchCase="dialogRemove">
       <div class="dialog__title">
         Удаление строк
@@ -12,15 +30,13 @@
       <div class="dialog__buttons">
         <button type="button" class="btn_alt" (click)="onClose()">
           Отмена
-        </button>
+        </button> 
+        
         
         <button type="button" class="btn" (click)="confirm()">
           Удалить
         </button>
       </div>
-    </ng-container>
-    <ng-container *ngSwitchCase="dialogAdd">
-      
     </ng-container>
   </ng-container>
 </div>

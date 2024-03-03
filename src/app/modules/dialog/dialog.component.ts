@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { DialogService } from 'app/shared/services/dialog.service';
+import { DialogService } from 'app/modules/dialog/services/dialog.service';
 import { ClientsRemovalService } from '../clients/services/clients-removal.service';
 import { dialogType } from './models/dialog-type.enum';
 

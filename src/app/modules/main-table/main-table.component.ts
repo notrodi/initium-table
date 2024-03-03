@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { IClient } from '@interfaces';
 import { CLIENTS } from '@mocks';
 import { Select, Store } from '@ngxs/store';
-import { DialogService } from 'app/shared/services/dialog.service';
+import { DialogService } from 'app/modules/dialog/services/dialog.service';
 import { ClientsActions } from '../clients/state/clients.actions';
 import { ClientsState } from '../clients/state/clients.state';
 import { Observable } from 'rxjs';
@@ -20,6 +20,7 @@ export class MainTableComponent {
   // readonly clients = CLIENTS;
   // readonly clients: IClient[] = [];
 
+  readonly dialogType = dialogType;
   selectClient = this._clientsRemoval.selectClient;
   selectAllClients = this._clientsRemoval.selectAllClients;
 
@@ -43,13 +44,8 @@ export class MainTableComponent {
     this._store.dispatch(new ClientsActions.GetClients);
   }
 
-  public onClickAdd(): void {
-    this._dialog.show();
-  }
-
-  public removeClients(): void {
-    this._dialog.setDialogType(dialogType.REMOVE);
-    this._dialog.show();
+  public dialogShow(type: dialogType): void {
+    this._dialog.show(type);
   }
 
   public confirm() {

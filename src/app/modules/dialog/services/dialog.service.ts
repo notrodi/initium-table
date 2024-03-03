@@ -12,15 +12,12 @@ export class DialogService {
     return this.dialogType;
   }
 
-  public show(): void {
+  public show(type: dialogType): void {
+    this.dialogType = type;
     this.isShowDialog = true;
   }
 
   public close(): void {
     this.isShowDialog = false;
-  }
-
-  public setDialogType(type: dialogType): void {
-    this.dialogType = type;
   }
 }
