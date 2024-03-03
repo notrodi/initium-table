@@ -20,6 +20,7 @@ export class MainTableComponent {
   // readonly clients: IClient[] = [];
 
   selectClient = this._clientsRemoval.selectClient;
+  selectAllClients = this._clientsRemoval.selectAllClients;
 
   @Select(ClientsState.clients) clients$: Observable<IClient[]>;
 

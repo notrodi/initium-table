@@ -9,7 +9,9 @@
 </div>
 
 <div class="main-table__row" [class.main-table__header]="(clients$ | async)?.length">
-  <input type="checkbox">
+  <input type="checkbox" id="checkbox__main" [checked]="selectedClients.length" [disabled]="!(clients$ | async)?.length" (change)="selectAllClients()">
+  <label for=""></label>
+
   <div class="main-table__cell main-table__title">Имя</div>
   <div class="main-table__cell main-table__title">Фамилия</div>
   <div class="main-table__cell main-table__title main-table__cell_alt">E-mail</div>
@@ -19,7 +21,9 @@
 <div class="main-table__container">
   <ng-container *ngFor="let client of clients$ | async; let i = index">
     <div class="main-table__row">
-      <input type="checkbox" (change)="selectClient(i)">
+      <input type="checkbox" (change)="selectClient(i)" [checked]="selectedClients.includes(i)">
+      <label for=""></label>
+      
       <div class="main-table__cell">{{ client.name }}</div>
       <div class="main-table__cell">{{ client.surname }}</div>
       <div class="main-table__cell main-table__cell_alt">{{ client.email }}</div>
