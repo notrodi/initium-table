@@ -15,6 +15,11 @@ export class ClientsRemovalService {
   }
   
   public selectClient(index: number): void {
+    if(this.selectedClients.includes(index)) {
+      this.selectedClients.splice(this.selectedClients.indexOf(index), 1);
+      return;
+    }
+
     this.selectedClients.push(index);
   }
 
