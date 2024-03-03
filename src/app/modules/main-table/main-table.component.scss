@@ -20,6 +20,11 @@
     align-items: center;
     padding: .875rem 1.5rem;
     gap: 1rem;
+    transition: all .2s;
+
+    &:has(.main-table__name:hover) {
+      background: rgba(143, 175, 255, .08);
+    }
   }
 
   &__cell {
@@ -31,6 +36,31 @@
 
     &_alt {
       justify-content: end;
+    }
+  }
+
+  &__name {
+    position: relative;
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+      color: #2F4C97;
+
+      &:after {
+        width: 100%;
+      }
+    }
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 1px;
+      display: block;
+      position: absolute;
+      left: 0;
+      background-color: #2F4C97;
+      transition: all .2s;
     }
   }
 

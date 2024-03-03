@@ -23,8 +23,10 @@
     <div class="main-table__row">
       <input type="checkbox" (change)="selectClient(i)" [checked]="selectedClients.includes(i)">
       <label for=""></label>
-      
-      <div class="main-table__cell">{{ client.name }}</div>
+
+      <div class="main-table__cell">
+        <div class="main-table__name">{{ client.name }}</div>
+      </div>
       <div class="main-table__cell">{{ client.surname }}</div>
       <div class="main-table__cell main-table__cell_alt">{{ client.email }}</div>
       <div class="main-table__cell main-table__cell_alt">{{ client.phone }}</div>
