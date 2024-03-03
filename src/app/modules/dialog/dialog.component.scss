@@ -21,6 +21,13 @@
     font-weight: 500;
   }
 
+  &__form {
+    margin: 2.5rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
   &__description {
     margin: 1.75rem 0 .75rem;
     min-height: 6rem;

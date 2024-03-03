@@ -10,6 +10,11 @@ export namespace ClientsActions {
     constructor( public readonly payload: IClient[] ) { }
   }
 
+  export class AddNewClient {
+    static readonly type = '[Clients] Add New Client';
+    constructor( public readonly payload: IClient ) { }
+  }
+
   export class RemoveClients {
     static readonly type = '[Clients] Remove Clients';
     constructor( public readonly payload: number[] ) { }

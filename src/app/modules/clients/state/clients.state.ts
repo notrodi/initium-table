@@ -40,6 +40,14 @@ export class ClientsState {
   getClientsSuccess(ctx: StateContext<IClientsState>, { payload }: ClientsActions.GetClientsSuccess) {
     ctx.patchState({ clients: payload });
   }
+  
+  @Action(ClientsActions.AddNewClient)
+  addNewClient(ctx: StateContext<IClientsState>, { payload }: ClientsActions.AddNewClient) {
+    const { clients } = ctx.getState();
+    clients.unshift(payload);
+
+    ctx.patchState({ clients });
+  }
 
   @Action(ClientsActions.RemoveClients)
   removeClients(ctx: StateContext<IClientsState>, { payload }: ClientsActions.RemoveClients) {

@@ -4,8 +4,28 @@
       <div class="dialog__title">
         Новый клиент
       </div>
-    
-      
+        
+      <form class="dialog__form" [formGroup]="newClientForm">
+        <div class="input-text">
+          <input type="text" formControlName="name" placeholder=" ">
+          <label for="name">Имя</label>
+        </div>
+
+        <div class="input-text">
+          <input type="text" formControlName="surname" placeholder=" ">
+          <label for="surname">Фамилия</label>
+        </div>
+
+        <div class="input-text">
+          <input type="text" formControlName="email" placeholder=" ">
+          <label for="email">E-mail</label>
+        </div>
+
+        <div class="input-text">
+          <input type="text" formControlName="phone" placeholder=" ">
+          <label for="phone">Телефон</label>
+        </div>
+      </form>
     
       <div class="dialog__buttons">
         <button type="button" class="btn_alt" (click)="onClose()">
@@ -31,7 +51,6 @@
         <button type="button" class="btn_alt" (click)="onClose()">
           Отмена
         </button> 
-        
         
         <button type="button" class="btn" (click)="confirm()">
           Удалить
