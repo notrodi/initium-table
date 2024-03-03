@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MainTableComponent } from './main-table.component';
 import { CommonModule } from '@angular/common';
+import { DialogModule } from '../dialog/dialog.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { CommonModule } from '@angular/common';
     MainTableComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DialogModule
   ]
 })
 export class MainTableModule { }

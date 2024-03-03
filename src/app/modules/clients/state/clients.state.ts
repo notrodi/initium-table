@@ -4,7 +4,7 @@ import { IClient } from '@interfaces';
 import { ClientsActions } from './clients.actions';
 import { ClientsApiService } from '../services/clients-api.service';
 import { map, tap } from 'rxjs';
-import { mapClientsDtoToEntity } from '../functions';
+import { mapClientsDtoToEntity, removeClients } from '../functions';
 
 interface IClientsState {
   clients: IClient[];
@@ -20,7 +20,6 @@ const CLIENTS_STATE_DEFAULT: IClientsState = {
 })
 @Injectable()
 export class ClientsState {
-
   @Selector()
   static clients(state: IClientsState): IClient[] {
     return state.clients;
@@ -40,5 +39,12 @@ export class ClientsState {
   @Action(ClientsActions.GetClientsSuccess)
   getClientsSuccess(ctx: StateContext<IClientsState>, { payload }: ClientsActions.GetClientsSuccess) {
     ctx.patchState({ clients: payload });
+  }
+
+  @Action(ClientsActions.RemoveClients)
+  removeClients(ctx: StateContext<IClientsState>, { payload }: ClientsActions.RemoveClients) {
+    const { clients } = ctx.getState();
+
+    ctx.patchState({ clients: removeClients(clients, payload) });
   }
 }

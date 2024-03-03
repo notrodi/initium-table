@@ -9,4 +9,9 @@ export namespace ClientsActions {
     static readonly type = '[Clients] Get Clients: success';
     constructor( public readonly payload: IClient[] ) { }
   }
+
+  export class RemoveClients {
+    static readonly type = '[Clients] Remove Clients';
+    constructor( public readonly payload: number[] ) { }
+  }
 }

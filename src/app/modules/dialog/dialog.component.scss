@@ -21,6 +21,18 @@
     font-weight: 500;
   }
 
+  &__description {
+    margin: 1.75rem 0 .75rem;
+    min-height: 6rem;
+    font-size: 1.125rem
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: end;
+    gap: .25rem;
+  }
+
   &__overlay {
     position: absolute;
     top: 0;

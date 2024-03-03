@@ -1,9 +1,9 @@
 <div class="main-table__buttons">
-  <button class="btn-icon" type="button" (click)="onClickAdd()">
+  <button class="btn-icon" type="button">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"><path d="M18 18V2H2v16h16Zm-.222-18A2.222 2.222 0 0 1 20 2.222v15.556A2.222 2.222 0 0 1 17.778 20H2.222A2.222 2.222 0 0 1 0 17.778V2.222C0 .99 1 0 2.222 0h15.556Zm-8.89 5.556a1.111 1.111 0 1 1 2.223 0v3.333h3.333a1.111 1.111 0 1 1 0 2.222h-3.333v3.333a1.111 1.111 0 1 1-2.222 0v-3.333H5.556a1.111 1.111 0 1 1 0-2.222h3.333V5.556Z"/></svg>
   </button>
   
-  <button class="btn-icon" type="button" [disabled]="true">
+  <button class="btn-icon" type="button" [disabled]="!selectedClients.length" (click)="removeClients()">
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" fill="none"><path d="M3.84 20c-.463 0-.86-.163-1.191-.49-.33-.326-.649-.718-.649-1.177V3h-.5a1 1 0 0 1 0-2h5.787a1 1 0 0 1 1-1h5.425a1 1 0 0 1 1 1H20.5a1 1 0 1 1 0 2H20v15.333c0 .445-.322.834-.66 1.167-.337.333-.73.5-1.18.5H3.84ZM18 3H4v15h14V3ZM7 14.962a1 1 0 1 0 2 0v-9a1 1 0 1 0-2 0v9Zm6-.055a1 1 0 1 0 2 0V5.963a1 1 0 0 0-2 0v8.944Z"/></svg>
   </button>
 </div>
@@ -17,9 +17,9 @@
 </div>
 
 <div class="main-table__container">
-  <ng-container *ngFor="let client of clients$ | async">
+  <ng-container *ngFor="let client of clients$ | async; let i = index">
     <div class="main-table__row">
-      <input type="checkbox">
+      <input type="checkbox" (change)="selectClient(i)">
       <div class="main-table__cell">{{ client.name }}</div>
       <div class="main-table__cell">{{ client.surname }}</div>
       <div class="main-table__cell main-table__cell_alt">{{ client.email }}</div>
@@ -27,3 +27,7 @@
     </div>
   </ng-container>
 </div>
+
+<ng-container *ngIf="isShowDialog">
+  <it-dialog (isConfirmed)="confirm()"></it-dialog>
+</ng-container>

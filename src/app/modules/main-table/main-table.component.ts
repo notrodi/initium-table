@@ -6,6 +6,7 @@ import { DialogService } from 'app/shared/services/dialog.service';
 import { ClientsActions } from '../clients/state/clients.actions';
 import { ClientsState } from '../clients/state/clients.state';
 import { Observable } from 'rxjs';
+import { ClientsRemovalService } from '../clients/services/clients-removal.service';
 
 @Component({
   selector: 'it-main-table',
@@ -18,18 +19,37 @@ export class MainTableComponent {
   // readonly clients = CLIENTS;
   // readonly clients: IClient[] = [];
 
+  selectClient = this._clientsRemoval.selectClient;
+
   @Select(ClientsState.clients) clients$: Observable<IClient[]>;
+
+  get isShowDialog(): boolean {
+    return this._dialog.isShowDialog;
+  }
+
+  get selectedClients(): number[] {
+    return this._clientsRemoval.getSelectedClients();
+  }
   
   constructor (
     private readonly _dialog: DialogService,
+    private readonly _clientsRemoval: ClientsRemovalService,
     private readonly _store: Store
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._store.dispatch(new ClientsActions.GetClients);
   }
 
-  public onClickAdd() {
+  public onClickAdd(): void {
     this._dialog.show();
+  }
+
+  public removeClients(): void {
+    this._dialog.show();
+  }
+
+  public confirm() {
+    this._clientsRemoval.removeClients(this.selectedClients);
   }
 }
