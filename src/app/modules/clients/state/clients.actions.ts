@@ -15,6 +15,11 @@ export namespace ClientsActions {
     constructor( public readonly payload: IClient ) { }
   }
 
+  export class EditClient {
+    static readonly type = '[Clients] Edit Client';
+    constructor( public readonly id: number, public readonly client: IClient ) { }
+  }
+
   export class RemoveClients {
     static readonly type = '[Clients] Remove Clients';
     constructor( public readonly payload: number[] ) { }

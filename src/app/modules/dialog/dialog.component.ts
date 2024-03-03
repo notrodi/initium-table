@@ -5,6 +5,7 @@ import { dialogType } from './models/dialog-type.enum';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { ClientsActions } from '../clients/state/clients.actions';
+import { ClientsState } from '../clients/state/clients.state';
 
 @Component({
   selector: 'it-dialog',
@@ -27,6 +28,10 @@ export class DialogComponent {
   get dialogType(): dialogType {
     return this._dialog.getDialogType();
   }
+
+  get clientIndex(): number {
+    return this._dialog.editClientIndex;
+  }
   
   constructor (
     public readonly _dialog: DialogService,
@@ -42,6 +47,12 @@ export class DialogComponent {
       email: [null],
       phone: [null]
     })
+
+    if (this.clientIndex >= 0) {
+      const client = this._store.selectSnapshot(ClientsState.clients)[this.clientIndex];
+
+      this.newClientForm.patchValue(client);
+    }
   }
 
   public onClose(): void {
@@ -50,8 +61,12 @@ export class DialogComponent {
 
   public confirm(): void {
     if (this.dialogType === dialogType.ADD) {
-      console.log(this.newClientForm.value);
       this._store.dispatch(new ClientsActions.AddNewClient(this.newClientForm.value));
+    }
+
+    if (this.dialogType === dialogType.EDIT) {
+      this._store.dispatch(new ClientsActions.EditClient(this.clientIndex, this.newClientForm.value));
+      this.newClientForm.reset();
     }
 
     this._dialog.close();

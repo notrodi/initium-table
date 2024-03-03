@@ -48,6 +48,14 @@ export class ClientsState {
 
     ctx.patchState({ clients });
   }
+  
+  @Action(ClientsActions.EditClient)
+  editClient(ctx: StateContext<IClientsState>, { id, client }: ClientsActions.EditClient) {
+    const { clients } = ctx.getState();
+    clients[id] = client;
+
+    ctx.patchState({ clients });
+  }
 
   @Action(ClientsActions.RemoveClients)
   removeClients(ctx: StateContext<IClientsState>, { payload }: ClientsActions.RemoveClients) {

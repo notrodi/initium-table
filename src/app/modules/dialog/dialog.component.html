@@ -1,63 +1,61 @@
 <div class="dialog__body">
-  <ng-container [ngSwitch]="dialogType">
-    <ng-container *ngSwitchCase="dialogAdd">
-      <div class="dialog__title">
-        Новый клиент
-      </div>
+  <ng-container *ngIf="dialogType !== dialogRemove; else dialogRemoveTmpl">
+    <div class="dialog__title">
+      {{ dialogType === dialogAdd ? 'Новый клиент' : 'Редактирование' }}
+    </div>
         
-      <form class="dialog__form" [formGroup]="newClientForm">
-        <div class="input-text">
-          <input type="text" formControlName="name" placeholder=" ">
-          <label for="name">Имя</label>
-        </div>
-
-        <div class="input-text">
-          <input type="text" formControlName="surname" placeholder=" ">
-          <label for="surname">Фамилия</label>
-        </div>
-
-        <div class="input-text">
-          <input type="text" formControlName="email" placeholder=" ">
-          <label for="email">E-mail</label>
-        </div>
-
-        <div class="input-text">
-          <input type="text" formControlName="phone" placeholder=" ">
-          <label for="phone">Телефон</label>
-        </div>
-      </form>
-    
-      <div class="dialog__buttons">
-        <button type="button" class="btn_alt" (click)="onClose()">
-          Отмена
-        </button>
-        
-        <button type="button" class="btn" (click)="confirm()">
-          Сохранить
-        </button>
+    <form class="dialog__form" [formGroup]="newClientForm">
+      <div class="input-text">
+        <input type="text" formControlName="name" placeholder=" ">
+        <label for="name">Имя</label>
       </div>
-    </ng-container>
 
-    <ng-container *ngSwitchCase="dialogRemove">
-      <div class="dialog__title">
-        Удаление строк
+      <div class="input-text">
+        <input type="text" formControlName="surname" placeholder=" ">
+        <label for="surname">Фамилия</label>
       </div>
-    
-      <div class="dialog__description">
-        Удалить выбранные строки ({{ selectedClients.length }})?
+
+      <div class="input-text">
+        <input type="text" formControlName="email" placeholder=" ">
+        <label for="email">E-mail</label>
       </div>
-    
-      <div class="dialog__buttons">
-        <button type="button" class="btn_alt" (click)="onClose()">
-          Отмена
-        </button> 
-        
-        <button type="button" class="btn" (click)="confirm()">
-          Удалить
-        </button>
+
+      <div class="input-text">
+        <input type="text" formControlName="phone" placeholder=" ">
+        <label for="phone">Телефон</label>
       </div>
-    </ng-container>
+    </form>
+  
+    <div class="dialog__buttons">
+      <button type="button" class="btn_alt" (click)="onClose()">
+        Отмена
+      </button>
+      
+      <button type="button" class="btn" (click)="confirm()">
+        Сохранить
+      </button>
+    </div>
   </ng-container>
 </div>
 
 <div class="dialog__overlay"></div>
+
+<ng-template #dialogRemoveTmpl>
+  <div class="dialog__title">
+    Удаление строк
+  </div>
+
+  <div class="dialog__description">
+    Удалить выбранные строки ({{ selectedClients.length }})?
+  </div>
+
+  <div class="dialog__buttons">
+    <button type="button" class="btn_alt" (click)="onClose()">
+      Отмена
+    </button> 
+    
+    <button type="button" class="btn" (click)="confirm()">
+      Удалить
+    </button>
+  </div>
+</ng-template>

@@ -44,8 +44,8 @@ export class MainTableComponent {
     this._store.dispatch(new ClientsActions.GetClients);
   }
 
-  public dialogShow(type: dialogType): void {
-    this._dialog.show(type);
+  public dialogShow(type: dialogType, id?: number): void {
+    this._dialog.show(type, id);
   }
 
   public confirm() {
