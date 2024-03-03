@@ -7,6 +7,7 @@ import { ClientsActions } from '../clients/state/clients.actions';
 import { ClientsState } from '../clients/state/clients.state';
 import { Observable } from 'rxjs';
 import { ClientsRemovalService } from '../clients/services/clients-removal.service';
+import { dialogType } from '../dialog/models/dialog-type.enum';
 
 @Component({
   selector: 'it-main-table',
@@ -47,6 +48,7 @@ export class MainTableComponent {
   }
 
   public removeClients(): void {
+    this._dialog.setDialogType(dialogType.REMOVE);
     this._dialog.show();
   }
 

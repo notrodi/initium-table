@@ -1,21 +1,28 @@
 <div class="dialog__body">
-  <div class="dialog__title">
-    Удаление строк
-  </div>
-
-  <div class="dialog__description">
-    Удалить выбранные строки ({{ selectedClients.length }})?
-  </div>
-
-  <div class="dialog__buttons">
-    <button type="button" class="btn_alt" (click)="onClose()">
-      Отмена
-    </button>
+  <ng-container [ngSwitch]="dialogType">
+    <ng-container *ngSwitchCase="dialogRemove">
+      <div class="dialog__title">
+        Удаление строк
+      </div>
     
-    <button type="button" class="btn" (click)="confirm()">
-      Удалить
-    </button>
-  </div>
+      <div class="dialog__description">
+        Удалить выбранные строки ({{ selectedClients.length }})?
+      </div>
+    
+      <div class="dialog__buttons">
+        <button type="button" class="btn_alt" (click)="onClose()">
+          Отмена
+        </button>
+        
+        <button type="button" class="btn" (click)="confirm()">
+          Удалить
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="dialogAdd">
+      
+    </ng-container>
+  </ng-container>
 </div>
 
 <div class="dialog__overlay"></div>
