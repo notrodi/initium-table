@@ -8,21 +8,25 @@
       <div class="input-text">
         <input type="text" formControlName="name" placeholder=" ">
         <label for="name">Имя</label>
+        <div class="input-text__failed" *ngIf="isControlInvalid('name')">Минимальное количество символов: 2</div>
       </div>
 
       <div class="input-text">
         <input type="text" formControlName="surname" placeholder=" ">
         <label for="surname">Фамилия</label>
+        <div class="input-text__failed" *ngIf="isControlInvalid('surname')">Минимальное количество символов: 2</div>
       </div>
 
       <div class="input-text">
         <input type="text" formControlName="email" placeholder=" ">
         <label for="email">E-mail</label>
+        <div class="input-text__failed" *ngIf="isControlInvalid('email')">Некорректный адрес</div>
       </div>
 
       <div class="input-text">
         <input type="text" formControlName="phone" placeholder=" ">
         <label for="phone">Телефон</label>
+        <div class="input-text__failed" *ngIf="isControlInvalid('phone')">Некорректный номер телефона</div>
       </div>
     </form>
   

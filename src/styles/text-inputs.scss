@@ -40,8 +40,25 @@ input[type='text'] {
     background: #FFFFFF;
     transition: all .2s;
   }
+
+  &.ng-touched.ng-invalid{
+    border-color: #DA1B1B;
+
+    + label {
+      color: #DA1B1B;
+    }
+   }
 }
 
 .input-text {
-  position: relative;  
+  position: relative;
+
+  &__failed {
+    position: absolute;
+    right: 0;
+    bottom: -1.125rem;
+    font-size: .75rem;
+
+    color: #DA1B1B;
+  }
 }
