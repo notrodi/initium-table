@@ -29,6 +29,13 @@ export class ClientsState {
 
   @Action(ClientsActions.GetClients)
   getClients(ctx: StateContext<IClientsState>) {
+    const clients = localStorage.getItem('clients');
+
+    if (clients) {
+      ctx.dispatch(new ClientsActions.GetClientsSuccess(JSON.parse(clients)))
+      return;
+    }
+
     return this._api.getClients()
       .pipe(
         map(mapClientsDtoToEntity),
@@ -38,6 +45,7 @@ export class ClientsState {
 
   @Action(ClientsActions.GetClientsSuccess)
   getClientsSuccess(ctx: StateContext<IClientsState>, { payload }: ClientsActions.GetClientsSuccess) {
+    localStorage.setItem('clients', JSON.stringify(payload));
     ctx.patchState({ clients: payload });
   }
   
@@ -46,6 +54,7 @@ export class ClientsState {
     const { clients } = ctx.getState();
     clients.unshift(payload);
 
+    localStorage.setItem('clients', JSON.stringify(clients));
     ctx.patchState({ clients });
   }
   
@@ -54,13 +63,16 @@ export class ClientsState {
     const { clients } = ctx.getState();
     clients[id] = client;
 
+    localStorage.setItem('clients', JSON.stringify(clients));
     ctx.patchState({ clients });
   }
 
   @Action(ClientsActions.RemoveClients)
   removeClients(ctx: StateContext<IClientsState>, { payload }: ClientsActions.RemoveClients) {
     const { clients } = ctx.getState();
+    const resultClients = removeClients(clients, payload);
 
-    ctx.patchState({ clients: removeClients(clients, payload) });
+    localStorage.setItem('clients', JSON.stringify(resultClients));
+    ctx.patchState({ clients: resultClients });
   }
 }
