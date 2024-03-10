@@ -32,10 +32,10 @@ export class ClientsState {
   getClients(ctx: StateContext<IClientsState>) {
     const clients = localStorage.getItem('clients');
 
-    // if (clients) {
-    //   ctx.dispatch(new ClientsActions.GetClientsSuccess(JSON.parse(clients)))
-    //   return;
-    // }
+    if (clients) {
+      ctx.dispatch(new ClientsActions.GetClientsSuccess(JSON.parse(clients)))
+      return;
+    }
 
     return this._api.getClients()
       .pipe(

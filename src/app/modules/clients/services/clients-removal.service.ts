@@ -40,6 +40,15 @@ export class ClientsRemovalService {
     }
   }
 
+  public addNewClient(): void {
+    this.selectedClients = this.selectedClients.map(index => index + 1)
+    console.log(this.selectedClients);
+  }
+
+  public cancelSelection(): void {
+    this.selectedClients = [];
+  }
+
   public removeClients(clientsIndex: number[]) {
     this._store.dispatch(new ClientsActions.RemoveClients(clientsIndex));
     this.selectedClients = [];

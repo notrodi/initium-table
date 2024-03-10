@@ -32,6 +32,10 @@ export class MainTableComponent {
     return this._dialog.isShowDialog;
   }
 
+  get currentDialogType(): dialogType {
+    return this._dialog.getDialogType();
+  }
+
   get selectedClients(): number[] {
     return this._clientsRemoval.getSelectedClients();
   }
@@ -51,10 +55,15 @@ export class MainTableComponent {
   }
 
   public confirm(): void {
-    this._clientsRemoval.removeClients(this.selectedClients);
+    if(this.currentDialogType === dialogType.REMOVE) {
+      this._clientsRemoval.removeClients(this.selectedClients);
+    } else if(this.currentDialogType === dialogType.ADD) {
+      this._clientsRemoval.addNewClient();
+    }
   }
 
   public filterClients(type: filterType): void {
     this._store.dispatch(new ClientsActions.ApplyFilter(type));
+    this._clientsRemoval.cancelSelection();    
   }
 }
