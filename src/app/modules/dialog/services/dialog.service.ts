@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { dialogType } from 'app/modules/dialog/models/dialog-type.enum';
+import { dialogType } from 'app/modules/dialog/interfaces/dialog-type.enum';
 
 @Injectable({
   providedIn: 'root'

@@ -7,7 +7,8 @@ import { ClientsActions } from '../clients/state/clients.actions';
 import { ClientsState } from '../clients/state/clients.state';
 import { Observable } from 'rxjs';
 import { ClientsRemovalService } from '../clients/services/clients-removal.service';
-import { dialogType } from '../dialog/models/dialog-type.enum';
+import { dialogType } from '../dialog/interfaces/dialog-type.enum';
+import { filterType } from './interfaces';
 
 @Component({
   selector: 'it-main-table',
@@ -21,6 +22,7 @@ export class MainTableComponent {
   // readonly clients: IClient[] = [];
 
   readonly dialogType = dialogType;
+  readonly filterType = filterType;
   selectClient = this._clientsRemoval.selectClient;
   selectAllClients = this._clientsRemoval.selectAllClients;
 
@@ -48,7 +50,11 @@ export class MainTableComponent {
     this._dialog.show(type, id);
   }
 
-  public confirm() {
+  public confirm(): void {
     this._clientsRemoval.removeClients(this.selectedClients);
+  }
+
+  public filterClients(type: filterType): void {
+    this._store.dispatch(new ClientsActions.ApplyFilter(type));
   }
 }

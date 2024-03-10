@@ -29,6 +29,8 @@
 
   &__cell {
     display: flex;
+    align-items: center;
+    gap: .5rem;
     width: 100%;
     max-width: 17.5rem;
     font-size: .875rem;

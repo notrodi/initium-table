@@ -1,4 +1,5 @@
 import { IClient } from '@interfaces';
+import { filterType } from 'app/modules/main-table/interfaces';
 
 export namespace ClientsActions {
   export class GetClients {
@@ -23,5 +24,10 @@ export namespace ClientsActions {
   export class RemoveClients {
     static readonly type = '[Clients] Remove Clients';
     constructor( public readonly payload: number[] ) { }
+  }
+
+  export class ApplyFilter {
+    static readonly type = '[Clients] Apply Filter';
+    constructor( public readonly type: filterType ) { }
   }
 }

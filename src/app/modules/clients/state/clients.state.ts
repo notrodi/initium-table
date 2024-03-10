@@ -5,6 +5,7 @@ import { ClientsActions } from './clients.actions';
 import { ClientsApiService } from '../services/clients-api.service';
 import { map, tap } from 'rxjs';
 import { mapClientsDtoToEntity, removeClients } from '../functions';
+import { sortClientsByFilter } from './functions';
 
 interface IClientsState {
   clients: IClient[];
@@ -31,10 +32,10 @@ export class ClientsState {
   getClients(ctx: StateContext<IClientsState>) {
     const clients = localStorage.getItem('clients');
 
-    if (clients) {
-      ctx.dispatch(new ClientsActions.GetClientsSuccess(JSON.parse(clients)))
-      return;
-    }
+    // if (clients) {
+    //   ctx.dispatch(new ClientsActions.GetClientsSuccess(JSON.parse(clients)))
+    //   return;
+    // }
 
     return this._api.getClients()
       .pipe(
@@ -74,5 +75,14 @@ export class ClientsState {
 
     localStorage.setItem('clients', JSON.stringify(resultClients));
     ctx.patchState({ clients: resultClients });
+  }
+
+  @Action(ClientsActions.ApplyFilter)
+  applyFilter(ctx: StateContext<IClientsState>, { type }: ClientsActions.ApplyFilter) {
+    const { clients } = ctx.getState();
+    const sortClients = sortClientsByFilter(clients, type);
+
+    ctx.patchState({ clients: sortClients });
+    localStorage.setItem('clients', JSON.stringify(sortClients));
   }
 }

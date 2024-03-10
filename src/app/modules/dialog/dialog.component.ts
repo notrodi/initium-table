@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { DialogService } from 'app/modules/dialog/services/dialog.service';
 import { ClientsRemovalService } from '../clients/services/clients-removal.service';
-import { dialogType } from './models/dialog-type.enum';
+import { dialogType } from './interfaces/dialog-type.enum';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { ClientsActions } from '../clients/state/clients.actions';
